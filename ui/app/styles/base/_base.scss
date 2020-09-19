@@ -1,0 +1,28 @@
+// Base
+
+html {
+  font-size: 6px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 8px;
+  }
+
+  @include media-breakpoint-up(xl) {
+    font-size: 10px;
+  }
+}
+
+a {
+  text-decoration: none !important;
+}
+
+* {
+  outline: none !important;
+}
+
+.bg-image {
+  background-size: cover;
+  background-color: $gray-300;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
