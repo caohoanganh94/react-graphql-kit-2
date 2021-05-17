@@ -1,4 +1,5 @@
 import Swal from 'sweetalert2';
+import * as dayjs from 'dayjs';
 
 export function getCookie(cname) {
   var name = cname + '=';
@@ -15,7 +16,7 @@ export function getCookie(cname) {
   return '';
 }
 
-export function showError(code, title = 'Thông báo') {
+export function showError(code, title = 'Thông báo', onClose = () => {}) {
   let msg = '';
 
   switch (code) {
@@ -32,19 +33,16 @@ export function showError(code, title = 'Thông báo') {
     showCloseButton: true,
     closeButtonHtml: '<img src="/img/icon-close.png" alt="Đóng"/>',
     target: 'body',
+    onClose: () => {
+      onClose();
+    },
     customClass: {
-      popup: 'popup-alert popup-error'
-    },
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown animate__faster'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp animate__faster'
+      popup: `popup-alert popup-error ${title.length ? '' : 'popup-no-title'}`
     },
   })
 }
 
-export function showSuccess(code, title = 'Thông báo') {
+export function showSuccess(code, data = {}, title = 'Chúc mừng', onClose = () => {}) {
   let msg = '';
 
   switch (code) {
@@ -55,20 +53,54 @@ export function showSuccess(code, title = 'Thông báo') {
 
   return Swal.fire({
     title: `<span class="popup-alert__title">${title}</span>`,
-    html: `<p class="popup-alert__message">${msg}</p>`,
+    html: `
+      ${data.image ? `<div class="popup-alert__image"><img src="${data.image}"/></div>` : ''}
+      <p class="popup-alert__message">${msg}</p>
+      ${data.actionLabel ? `<a class="popup-alert__action" href="${data.actionLink}">${data.actionLabel}</a>` : ''}
+    `,
     showConfirmButton: false,
     showCancelButton: false,
     showCloseButton: true,
     closeButtonHtml: '<img src="/img/icon-close.png" alt="Đóng"/>',
     target: 'body',
+    onClose: () => {
+      onClose();
+    },
     customClass: {
-      popup: 'popup-alert popup-success'
-    },
-    showClass: {
-      popup: 'animate__animated animate__fadeInDown animate__faster'
-    },
-    hideClass: {
-      popup: 'animate__animated animate__fadeOutUp animate__faster'
+      popup: `popup-alert popup-success ${title.length ? '' : 'popup-no-title'}`
     },
   })
+}
+
+export function showConfirm(msg = 'Bạn có chắc chắn không?', callback = () => {}, title = 'Thông báo') {
+  return Swal.fire({
+    title: `<span class="popup-alert__title">${title}</span>`,
+    html: `<p class="popup-alert__message">${msg}</p>`,
+    confirmButtonText: 'Có',
+    showCancelButton: true,
+    cancelButtonText: 'Không',
+    showCloseButton: true,
+    closeButtonHtml: '<img src="/img/icon-close.png" alt="Đóng"/>',
+    target: 'body',
+    reverseButtons: true,
+    customClass: {
+      popup: `popup-alert popup-confirm ${title.length ? '' : 'popup-no-title'}`
+    },
+  }).then(res => {
+    if (res.value) {
+      callback();
+    }
+  });
+}
+
+export function getDateTime(dateTime, format = 'HH:mm DD/MM/YYYY') {
+  return dayjs(dateTime).format(format);
+};
+
+export function isCurrentAfter(date) {
+  return dayjs().isAfter(dayjs(date));
+}
+
+export function isCurrentBefore(date) {
+  return dayjs().isBefore(dayjs(date));
 }

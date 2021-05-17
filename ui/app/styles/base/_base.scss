@@ -20,9 +20,37 @@ a {
   outline: none !important;
 }
 
+// img {
+//   -webkit-tap-highlight-color: transparent;
+//   -webkit-touch-callout: none;
+//   -webkit-user-select: none;
+//   user-select: none;
+//   pointer-events: none;
+// }
+
+// body {
+//   user-select: none;
+// }
+
 .bg-image {
   background-size: cover;
   background-color: $gray-300;
   background-repeat: no-repeat;
   background-position: center center;
+}
+
+#main {
+  position: relative;
+}
+
+.pc {
+  @include mo() {
+    display: none !important;
+  }
+}
+
+.mo {
+  @include pc() {
+    display: none !important;
+  }
 }

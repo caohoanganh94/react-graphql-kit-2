@@ -6,12 +6,14 @@ Modal.setAppElement('#main');
 
 const Popup = ({
   isOpen = false,
-  onClose = () => {},
-  body = null,
+  children = null,
+  title = '',
   className = '',
   hideCloseButton = false,
   theme = 'default',
-  outsideClose = false
+  outsideClose = true,
+  scrollbar = false,
+  onClose = () => {},
 }) => {
   const afterOpenModal = () => {};
   const selfClose = (e) => {
@@ -23,7 +25,13 @@ const Popup = ({
     if (outsideClose) {
       onClose(e);
     }
-  }
+  };
+
+  const body = (
+    <>
+      {children && <div className="modal-content">{children}</div>}
+    </>
+  );
 
   return (
     <Modal
@@ -33,24 +41,17 @@ const Popup = ({
       className={`modal-select modal-theme-${theme} ${className}`}
     >
       <div className="modal-wrapper">
-        {body && (
-          <div className="modal-body">
-            {theme === 'default' ? (
-              <Scrollbar noScrollX={true}>
-                <div className="modal-content">
-                  {body}
-                </div>
-              </Scrollbar>
-            ) : (
-              <div className="modal-content">
-                {body}
-              </div>
-            )}
-          </div>
-        )}
+        {title && <h3 className="modal-title">{title}</h3>}
+        <div className="modal-body">
+          {scrollbar ? (
+            <Scrollbar noScrollX={true}>{body}</Scrollbar>
+          ) : (
+            <>{body}</>
+          )}
+        </div>
         {!hideCloseButton && (
           <a onClick={e => selfClose(e)} className="close" data-dismiss="modal" aria-label="Close" title="Đóng">
-            <img src="/img/icon-close.png" alt="Đóng" />
+            <img src={`/img/icon-close.png`} alt="Đóng" />
           </a>
         )}
       </div>

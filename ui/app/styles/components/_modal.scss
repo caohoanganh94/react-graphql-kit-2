@@ -1,1 +1,143 @@
 // Modal
+
+.ReactModal__Overlay {
+  display: flex !important;
+  position: fixed !important;
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0;
+  left: 0 !important;
+  flex-direction: row !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 0 !important;
+  z-index: 1060 !important;
+  overflow: hidden !important;
+  -webkit-overflow-scrolling: touch !important;
+  background: rgba($black, .8) !important;
+}
+
+.ReactModal__Content {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  font-family: inherit;
+  box-sizing: border-box;
+  margin: auto;
+  border-radius: 0 !important;
+  background: transparent;
+  border: 0 !important;
+  padding: 0 !important;
+  outline: none;
+  transform: scale(.5);
+  transition: all 500ms ease;
+  width: 100% !important;
+  height: 100% !important;
+  opacity: 0;
+
+  &--after-open {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &--before-close {
+    transform: scale(0);
+  }
+
+  .modal-wrapper {
+    width: 100%;
+    height: 100%;
+    position: relative;
+
+    .modal-body {
+      overflow: hidden;
+      will-change: transform;
+      height: 100%;
+
+      .modal-content {
+        width: 100%;
+      }
+    }
+  }
+
+  .close {
+    position: absolute;
+    opacity: 1 !important;
+    outline: none !important;
+    z-index: 9;
+    cursor: pointer;
+    display: inline-block;
+    line-height: 1em;
+    transition: all 300ms ease;
+
+    img {
+      width: px(26);
+
+      @include media-breakpoint-down($pointDown) {
+        width: pxm(24);
+      }
+    }
+  }
+
+  // DEFAULT
+  &.modal-theme-default {
+    max-width: px(1335);
+    max-height: px(908);
+
+    @include media-breakpoint-down($pointDown) {
+      max-width: pxm(713);
+      max-height: pxm(707);
+    }
+
+    .close {
+      top: px(0);
+      right: px(0);
+
+      @include media-breakpoint-down($pointDown) {
+        top: pxm(0);
+        right: pxm(0);
+      }
+    }
+
+    .modal-wrapper {
+      .modal-body {
+        position: relative;
+        background: url('/img/bg-popup.png') 0 0/100% 100% no-repeat;
+        padding: px(40) px(30);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        @include media-breakpoint-down($pointDown) {
+          padding: pxm(30) pxm(20);
+        }
+
+        &>* {
+          width: 100%;
+        }
+
+        &>.ScrollbarsCustom {
+          height: 100% !important;
+
+          .ScrollbarsCustom-Track {
+            right: px(-24) !important;
+
+            @include media-breakpoint-down($pointDown) {
+              right: pxm(-17) !important;
+            }
+          }
+
+          .ScrollbarsCustom-Content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            &>* {
+              width: 100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

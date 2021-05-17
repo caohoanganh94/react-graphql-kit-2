@@ -1,7 +1,7 @@
 export default {
-  baseUrl: 'https://sting.lienquan.garena.vn/',
-  domain: 'sting.lienquan.garena.vn',
+  baseUrl: 'https://domain.lienquan.garena.vn/',
+  domain: 'domain.lienquan.garena.vn',
   shareHashtag: '#ToBeUpdated',
-  shareQuote: 'Bật nắp Sting trúng quà đỉnh',
+  shareQuote: 'To Be Updated',
   linkGame: '#',
 }

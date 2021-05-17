@@ -1,1 +1,147 @@
 // Sweetalert2
+
+.swal2-container {
+  z-index: 1070 !important;
+}
+
+.swal2-container.swal2-backdrop-show,
+.swal2-container.swal2-noanimation {
+  background: rgba($black, .8) !important;
+}
+
+.swal2-popup {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: px(1335) !important;
+  max-height: px(908) !important;
+  border-radius: 0 !important;
+  padding: px(40) px(30) !important;
+  background: url('/img/bg-popup.png') 0 0/100% 100% no-repeat !important;
+
+  @include media-breakpoint-down($pointDown) {
+    max-width: pxm(713) !important;
+    max-height: pxm(707) !important;
+    padding: pxm(30) pxm(20) !important;
+  }
+
+  .swal2-title {
+    line-height: 1.1em;
+    font-size: px(50);
+    margin: 0;
+    padding: 0;
+
+    @include media-breakpoint-down($pointDown) {
+      font-size: pxm(35);
+    }
+  }
+
+  .swal2-header, .swal2-content {
+    padding: 0 !important;
+  }
+
+  .swal2-close {
+    width: auto;
+    height: auto;
+    color: transparent;
+    outline: none;
+    right: auto;
+    top: px(0);
+    right: px(0);
+    display: inline-block;
+    transition: opacity 300ms ease;
+
+    @include media-breakpoint-down($pointDown) {
+      top: pxm(0);
+      right: pxm(0);
+    }
+
+    &:hover {
+      opacity: .7 !important;
+    }
+
+    img {
+      width: px(26);
+
+      @include media-breakpoint-down($pointDown) {
+        width: pxm(24);
+      }
+    }
+  }
+
+  .popup-alert {
+    &__message {
+      font-size: px(30);
+      margin: 0;
+
+      @include media-breakpoint-down($pointDown) {
+        font-size: pxm(20);
+      }
+    }
+
+    &__image {
+      img {
+        max-height: px(200);
+
+        @include media-breakpoint-down($pointDown) {
+          max-height: pxm(150);
+        }
+      }
+    }
+
+    &__action {
+
+    }
+  }
+
+  &.popup-no-title {
+    .swal2-title {
+      display: none !important;
+    }
+  }
+
+  &.popup-success {
+
+  }
+
+  &.popup-error {
+
+  }
+
+  &.popup-confirm {
+    .swal2-actions {
+      button {
+        border: 0 !important;
+        margin: 0 !important;
+        color: $white !important;
+        border-radius: 0 !important;
+        font-weight: normal !important;
+        box-shadow: none !important;
+        text-transform: uppercase !important;
+        font-size: pxm(16) !important;
+        padding: pxm(10) pxm(20) !important;
+        line-height: 1.1em;
+        min-width: pxm(106);
+
+        @include media-breakpoint-up($pointUp) {
+          font-size: px(22) !important;
+          padding: px(15) px(30) !important;
+          min-width: px(180);
+        }
+
+        &.swal2-confirm {
+          background: $black !important;
+        }
+
+        &.swal2-cancel {
+          color: $black !important;
+          background: $white !important;
+          margin-right: pxm(20) !important;
+
+          @include media-breakpoint-up($pointUp) {
+            margin-right: px(30) !important;
+          }
+        }
+      }
+    }
+  }
+}

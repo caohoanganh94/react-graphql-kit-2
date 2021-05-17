@@ -5,3 +5,9 @@
   $result: ($number/1920 * 100) * $ratio;
   @return $result+vw;
 }
+
+@function pxm($number, $ratio: 1) {
+  $result: 0;
+  $result: ($number/750 * 100) * $ratio;
+  @return $result+vw;
+}

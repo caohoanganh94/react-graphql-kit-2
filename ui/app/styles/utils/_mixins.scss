@@ -48,3 +48,20 @@
   background: linear-gradient(to bottom, $colorStart 0%, $colorEnd 100%) !important;
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=$colorStart, endColorstr=$colorEnd, GradientType=0) !important;
 }
+
+@mixin imageShadow($color, $size: px(7)) {
+  -webkit-filter: drop-shadow(0 0 $size $color);
+  filter: drop-shadow(0 0 $size $color);
+}
+
+@mixin mo() {
+  @include media-breakpoint-down($pointDown) {
+    @content;
+  }
+}
+
+@mixin pc() {
+  @include media-breakpoint-up($pointUp) {
+    @content;
+  }
+}

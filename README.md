@@ -1,4 +1,4 @@
-# React GraphQL Kit 1
+# React GraphQL Kit 2
 
 ### 1. Setup Repository
 ```bash
@@ -13,11 +13,12 @@ $ git push origin HEAD
 ### 3. Install node_modules
 ```bash
 $ yarn
-$ yarn add animate.css
-$ yarn add bootstrap
-$ yarn add react-modal
-$ yarn add react-scrollbars-custom
-$ yarn add sweetalert2
+$ yarn add animate.css -D
+$ yarn add bootstrap -D
+$ yarn add react-modal -D
+$ yarn add react-scrollbars-custom -D
+$ yarn add sweetalert2 -D
+$ yarn add dayjs -D
 ```
 
 ### 4. Create Database
@@ -33,7 +34,7 @@ $ yarn dev yarn migrate
 
 ### 8. Development
 ```bash
-$ yarn start
+$ yarn start-dev
 ```
 OR
 ```bash
